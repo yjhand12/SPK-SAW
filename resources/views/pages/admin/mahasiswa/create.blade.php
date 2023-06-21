@@ -18,15 +18,24 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <label class="form-label">NISN</label><br>
-                    <input type="number" class="form-control" name="nisn" placeholder="Masukan NISN...">
+                    <input type="number" class="form-control" name="nisn" placeholder="Masukan NISN">
+                    @error('nisn')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <br><label for="inputPassword4" class="form-label">Nama</label><br>
-                    <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Lengkap...">    
+                    <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Lengkap">  
+                    @error('nama')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror  
                 </div>
                 <div class="col-6">
                     <br><label class="form-label">Tempat Lahir</label><br>
-                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Masukan Tempat Lahir...">
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
+                    @error('tempat_lahir')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-6">
                 <br><label class="form-label">Tanggal Lahir</label>
@@ -35,6 +44,9 @@
                         <span class="input-group-append">
                         </span>
                     </div>
+                    @error('tanggal_lahir')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <label class="form-label" style="margin-top:20px">Jenis Kelamin</label>
                     <div class="form-check">
@@ -47,7 +59,10 @@
                     </div>
                 <div class="col-md-7">
                     <br><label class="form-label">Asal Sekolah</label><br>
-                    <input type="text" class="form-control" name="asal_sekolah" placeholder="Masukan Asal Sekolah...">
+                    <input type="text" class="form-control" name="asal_sekolah" placeholder="Masukan Asal Sekolah">
+                    @error('asal_sekolah')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
                 <div class="mt-4">

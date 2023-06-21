@@ -23,11 +23,11 @@
                 </div>
                 <label class="form-label" style="margin-top:20px">Sifat Kriteria</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sifat" value="Max/Benefit" @if($kriteria->sifat == "Benefit") checked @endif>
+                        <input class="form-check-input" type="radio" name="sifat" value="Benefit" @if($kriteria->sifat == "Benefit") checked @endif>
                         <label class="form-check-label">Max/Benefit</label>
                     </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sifat" value="Min/Cost" @if($kriteria->sifat == "Cost") checked @endif>
+                    <input class="form-check-input" type="radio" name="sifat" value="Cost" @if($kriteria->sifat == "Cost") checked @endif>
                     <label class="form-check-label">Min/Cost</label>
                 </div>
                 <div class="col-md-6">

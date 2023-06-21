@@ -39,8 +39,14 @@ class KriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Kriteria::create($data);
+        $request->validate([
+            'nama' => 'required|unique:kriteria,nama',
+        ]);
+        Kriteria::create([
+            'nama' => $request->nama,
+            'sifat' => $request->sifat,
+            'bobot' => $request->bobot,
+        ]);
 
         return redirect()->route('kriteria.index');
     }

@@ -27,11 +27,17 @@
                 </div>
                 <div class="col-md-6">
                     <br><label class="form-label">Sub Kriteria / Keterangan</label><br>
-                    <input type="text" class="form-control" name="keterangan">    
+                    <input type="text" class="form-control" name="keterangan">
+                    @error('keterangan')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <br><label class="form-label">Bobot Sub Kriteria</label><br>
                     <input type="float" class="form-control" name="bobot">
+                    @error('bobot')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
                 <div class="mt-4">

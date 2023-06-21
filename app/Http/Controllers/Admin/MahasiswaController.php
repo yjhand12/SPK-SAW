@@ -40,8 +40,22 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Mahasiswa::create($data);
+        $request->validate([
+            'nisn' => 'required|unique:mahasiswa,nisn',
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'asal_sekolah' => 'required',
+        ]);
+
+        Mahasiswa::create([
+            'nisn' => $request->nisn,
+            'nama' => $request->nama,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'asal_sekolah' => $request->asal_sekolah,
+        ]);
 
         return redirect()->route('mahasiswa.index');
     }
@@ -82,6 +96,7 @@ class MahasiswaController extends Controller
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
         $rules = ([
+            'nisn' => 'required',
             'nama' => 'required|string|max:50',
             'tempat_lahir' => 'required|string|max:50',
             'tanggal_lahir' => 'required|date',

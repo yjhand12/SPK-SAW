@@ -48,12 +48,3 @@
     </div>
 </div>
 @endsection
-
-@push('addon-script')
-<script>
-    var select_box_element = document.querySelector('#select_box');
-    dselect(select_box_element, {
-        search: true
-    });
-</script>
-@endpush

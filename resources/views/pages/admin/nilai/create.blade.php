@@ -25,13 +25,13 @@
                     <select class="js-example-placeholder-single form-select" id="select_nisn" aria-label="Default select example" name="mahasiswa_id">
                         <option value=""></option>
                         @foreach ($mahasiswa as $mhs)
-                        <option value="{{ $mhs->id }}">{{ $mhs->nisn }}</option>
+                        <option value="{{ $mhs->id }}">{{ $mhs->nisn }} | {{ $mhs->nama }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <br><label class="form-label">Nama</label><br>
-                    <input type="text" class="form-control" id="nama" disabled>    
+                    <br><label class="form-label">Nama Mahasiswa</label><br>
+                    <input type="text" class="form-control" id="nama" disabled>
                 </div>
                 <div class="col-md-6">
                 @foreach ($kriteria as $kr)

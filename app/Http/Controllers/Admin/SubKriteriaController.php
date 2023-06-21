@@ -49,8 +49,16 @@ class SubKriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        SubKriteria::create($data);
+        $request->validate([
+            'kriteria_id' => 'required',
+            'keterangan' => 'required',
+            'bobot' => 'required',
+        ]);
+        SubKriteria::create([
+            'kriteria_id' => $request->kriteria_id,
+            'keterangan' => $request->keterangan,
+            'bobot' => $request->bobot,
+        ]);
 
         return redirect()->route('sub-kriteria.index');
     }
@@ -74,7 +82,7 @@ class SubKriteriaController extends Controller
      */
     public function edit($id)
     {   
-        $kriteria = Kriteria::get();
+        $kriteria = Kriteria::all();
         $subkriteria = SubKriteria::findOrfail($id);
 
 
@@ -93,9 +101,14 @@ class SubKriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'keterangan' => 'required',
+            'bobot' => 'required',
+        ]);
+    
         $data = $request->all();
-        $kriteria = Kriteria::all();
-        $subkriteria = SubKriteria::findOrfail($id);
+    
+        $subkriteria = SubKriteria::findOrFail($id);
         $subkriteria->update($data);
 
         return redirect()->route('sub-kriteria.index');

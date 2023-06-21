@@ -135,15 +135,14 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $kriteria = Kriteria::all();
-        $mahasiswa = Mahasiswa::all();
-        $nilai = Nilai::findOrfail($id);
-
-        foreach ($kriteria as $kr) {
-            $nilai->where('kriteria_id', $kr->id)->update([
-                "sub_kriteria_id" => $request->input('kriteria')[$kr->id],
-            ]);
+        $nilai = Nilai::findOrFail($id);
+        
+        foreach ($request->input('kriteria') as $kriteriaId => $subkriteriaId) {
+            $nilai->where('kriteria_id', $kriteriaId)
+                  ->where('mahasiswa_id', $nilai->mahasiswa_id)
+                  ->update(['sub_kriteria_id' => $subkriteriaId]);
         }
+
         return redirect()->route('nilai.index');
     }
 

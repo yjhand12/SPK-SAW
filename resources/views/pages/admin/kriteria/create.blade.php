@@ -18,7 +18,10 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <br><label class="form-label">Nama Kriteria</label><br>
-                    <input type="text" class="form-control" name="nama">    
+                    <input type="text" class="form-control" name="nama">
+                    @error('nama')
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <label class="form-label" style="margin-top:20px">Sifat Kriteria</label>
                     <div class="form-check">
