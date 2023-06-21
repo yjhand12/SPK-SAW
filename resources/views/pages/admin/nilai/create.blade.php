@@ -25,7 +25,7 @@
                     <select class="js-example-placeholder-single form-select" id="select_nisn" aria-label="Default select example" name="mahasiswa_id">
                         <option value=""></option>
                         @foreach ($mahasiswa as $mhs)
-                        <option value="{{ $mhs->id }}">{{ $mhs->nisn }} | {{ $mhs->nama }}</option>
+                        <option value="{{ $mhs->id }}">{{ $mhs->nisn }} &nbsp || &nbsp {{ $mhs->nama }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -60,12 +60,13 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.js-example-placeholder-single').select2({
+        $("#select_nisn").select2({
+            searchplaceholder: "My custom placeholder...",
             placeholder: "Pilih NISN Calon Mahasiswa",
             allowClear: true
         });
 
-        $('.js-example-placeholder-single').on('change', function() {
+        $("#select_nisn").on('change', function() {
             var mahasiswaId = $(this).val();
 
             if (mahasiswaId) {

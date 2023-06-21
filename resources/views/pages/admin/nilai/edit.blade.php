@@ -33,7 +33,7 @@
                         $res = $subkriteria->where('kriteria_id', $kr->id)->all();
                         @endphp
                             @foreach ($res as $skr)
-                                <option value="{{ $skr->id }}">{{ $skr->keterangan }}</option>
+                                <option value="{{ $skr->id }}" @if ($nilai->sub_kriteria_id == $skr->id) selected @endif>{{ $skr->keterangan }}</option>
                             @endforeach
                         </select>
                         @endforeach

@@ -33,17 +33,17 @@
                 <div class="col-md-6">
                     <br><label class="form-label">Bobot Kriteria</label><br>
                     <select class="form-select" aria-label="Default select example" name="bobot" value="{{$kriteria->bobot}}">
-                            <option disabled>Pilih Bobot Kriteria</option>
-                            <option value="0.1" @if($kriteria->bobot == "0.1") selected @endif>0.1</option>
-                            <option value="0.2" @if($kriteria->bobot == "0.2") selected @endif>0.2</option>
-                            <option value="0.3" @if($kriteria->bobot == "0.3") selected @endif>0.3</option>
-                            <option value="0.4" @if($kriteria->bobot == "0.4") selected @endif>0.4</option>
-                            <option value="0.5" @if($kriteria->bobot == "0.5") selected @endif>0.5</option>
-                            <option value="0.6" @if($kriteria->bobot == "0.6") selected @endif>0.6</option>
-                            <option value="0.7" @if($kriteria->bobot == "0.7") selected @endif>0.7</option>
-                            <option value="0.8" @if($kriteria->bobot == "0.8") selected @endif>0.8</option>
-                            <option value="0.9" @if($kriteria->bobot == "0.9") selected @endif>0.9</option>
-                        </select>
+                        <option disabled>Pilih Bobot Kriteria</option>
+                        <option value="0.1" @if($kriteria->bobot == "0.1") selected @endif>0.1</option>
+                        <option value="0.2" @if($kriteria->bobot == "0.2") selected @endif>0.2</option>
+                        <option value="0.3" @if($kriteria->bobot == "0.3") selected @endif>0.3</option>
+                        <option value="0.4" @if($kriteria->bobot == "0.4") selected @endif>0.4</option>
+                        <option value="0.5" @if($kriteria->bobot == "0.5") selected @endif>0.5</option>
+                        <option value="0.6" @if($kriteria->bobot == "0.6") selected @endif>0.6</option>
+                        <option value="0.7" @if($kriteria->bobot == "0.7") selected @endif>0.7</option>
+                        <option value="0.8" @if($kriteria->bobot == "0.8") selected @endif>0.8</option>
+                        <option value="0.9" @if($kriteria->bobot == "0.9") selected @endif>0.9</option>
+                    </select>
                 </div>
             </div>
                 <div class="mt-4">
