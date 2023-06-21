@@ -26,6 +26,7 @@ Route::prefix('admin')
         Route::resource('mahasiswa', 'MahasiswaController');
         Route::resource('kriteria', 'KriteriaController');
         Route::resource('sub-kriteria', 'SubKriteriaController');
+        Route::get('/nilai/get-nama', 'NilaiController@getNama')->name('nilai.getNama');
         Route::resource('nilai', 'NilaiController');
     });
 

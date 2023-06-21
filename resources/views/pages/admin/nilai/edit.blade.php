@@ -8,17 +8,18 @@
 <nav aria-label="breadcrumb" style="font-size:25px">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Nilai</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit Data Nilai Calon Mahasiswa</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Data Nilai Calon Mahasiswa {{ $nilai->mahasiswa->nama }}</li>
     </ol>
 </nav>
 <div class="card mb-3">
       <div class="card-body">
-        <form action="{{ route('nilai.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('nilai.update', $nilai->id) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form-group">
                 <div class="col-md-6">
                     <br><label class="form-label">NISN</label><br>
-                    <input type="text" class="form-control" value="{{ $nilai->mahasiswa->nisn }}" disabled>    
+                    <input type="text" class="form-control" name="mahasiswa_id" value="{{ $nilai->mahasiswa->nisn }}" disabled>    
                 </div>
                 <div class="col-md-6">
                     <br><label class="form-label">Nama</label><br>

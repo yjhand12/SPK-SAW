@@ -57,7 +57,9 @@ class NilaiController extends Controller
      */
     public function create()
     {
-        $mahasiswa = Mahasiswa::all();
+        $mahasiswa = Mahasiswa::whereNotIn('id', function ($query) {
+            $query->select('mahasiswa_id')->from('nilai');
+        })->get();
         $kriteria = Kriteria::all();
         $subkriteria = SubKriteria::all();
 
@@ -66,6 +68,11 @@ class NilaiController extends Controller
             'kriteria' => $kriteria,
             'subkriteria' => $subkriteria,
         ]);
+    }
+    public function getNama(Request $request)
+    {
+        $mahasiswa = Mahasiswa::find($request->mahasiswa_id);
+        return response()->json($mahasiswa->nama);
     }
 
     /**
@@ -106,10 +113,10 @@ class NilaiController extends Controller
      */
     public function edit($id)
     {
-        $nilai = Nilai::findOrfail($id);
-        $mahasiswa = Mahasiswa::get();
+        $mahasiswa = Mahasiswa::all();
         $kriteria = Kriteria::all();
         $subkriteria = SubKriteria::all();
+        $nilai = Nilai::FindOrfail($id);
 
         return view('pages.admin.nilai.edit',[
             'mahasiswa' => $mahasiswa,
@@ -128,7 +135,16 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kriteria = Kriteria::all();
+        $mahasiswa = Mahasiswa::all();
+        $nilai = Nilai::findOrfail($id);
+
+        foreach ($kriteria as $kr) {
+            $nilai->where('kriteria_id', $kr->id)->update([
+                "sub_kriteria_id" => $request->input('kriteria')[$kr->id],
+            ]);
+        }
+        return redirect()->route('nilai.index');
     }
 
     /**
@@ -139,7 +155,12 @@ class NilaiController extends Controller
      */
     public function destroy($id)
     {
-        Nilai::where('mahasiswa_id', $id)->delete();
+        Nilai::where('mahasiswa_id', $id)
+            ->whereIn('kriteria_id', function($query) use ($id){
+                $query->select('kriteria_id')->from('nilai')
+                ->where('mahasiswa_id', $id);
+            })
+            ->delete();
 
         return redirect()->route('nilai.index');
     }

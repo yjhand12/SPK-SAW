@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@push('addon-style')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('title')
     Nilai
 @endsection
@@ -18,35 +22,34 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <label class="form-label">NISN</label><br>
-                        <select class="form-select" id="select_box" aria-label="Default select example" name="mahasiswa_id">
-                            <option value="">----- Masukan NISN Calon Mahasiswa -----</option>
-                            @foreach ($mahasiswa as $mhs)
-                            <option value="{{ $mhs->id }}">{{ $mhs->nisn }}</option>
-                            @endforeach
-                        </select>
+                    <select class="js-example-placeholder-single form-select" id="select_nisn" aria-label="Default select example" name="mahasiswa_id">
+                        <option value=""></option>
+                        @foreach ($mahasiswa as $mhs)
+                        <option value="{{ $mhs->id }}">{{ $mhs->nisn }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <br><label class="form-label">Nama</label><br>
-                    <input type="text" class="form-control">    
+                    <input type="text" class="form-control" id="nama" disabled>    
                 </div>
                 <div class="col-md-6">
                 @foreach ($kriteria as $kr)
                     <br><label class="form-label" for="kriteria[{{ $kr->id }}]">{{ $kr->nama }}</label>
-                        <select class="form-select" id="kriteria[{{ $kr->id }}]" name="kriteria[{{ $kr->id }}]" aria-label="Default select example">
+                    <select class="form-select" id="kriteria[{{ $kr->id }}]" name="kriteria[{{ $kr->id }}]" aria-label="Default select example">
                         @php
                         $res = $subkriteria->where('kriteria_id', $kr->id)->all();
                         @endphp
-                            @foreach ($res as $skr)
-                                <option value="{{ $skr->id }}">{{ $skr->keterangan }}</option>
-                            @endforeach
-                        </select>
+                        @foreach ($res as $skr)
+                        <option value="{{ $skr->id }}">{{ $skr->keterangan }}</option>
                         @endforeach
+                    </select>
+                @endforeach
                 </div>
             </div>
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-success float-start mx-3" style="width:150px">Simpan</button>
-                    <a class="btn btn-danger float-end mx-5" href="{{route('nilai.index')}}" type="button" style="width:150px">Batal</a>
-                </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success float-start mx-3" style="width:150px">Simpan</button>
+                <a class="btn btn-danger float-end mx-5" href="{{route('nilai.index')}}" type="button" style="width:150px">Batal</a>
             </div>
         </form>
     </div>
@@ -54,10 +57,34 @@
 @endsection
 
 @push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-    var select_box_element = document.querySelector('#select_box');
-    dselect(select_box_element, {
-        search: true
+    $(document).ready(function() {
+        $('.js-example-placeholder-single').select2({
+            placeholder: "Pilih NISN Calon Mahasiswa",
+            allowClear: true
+        });
+
+        $('.js-example-placeholder-single').on('change', function() {
+            var mahasiswaId = $(this).val();
+
+            if (mahasiswaId) {
+                $.ajax({
+                    url: '{{ route("nilai.getNama") }}',
+                    type: 'GET',
+                    data: { mahasiswa_id: mahasiswaId },
+                    success: function(response) {
+                        $('#nama').val(response);
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            } else {
+                $('#nama').val('');
+            }
+        });
     });
 </script>
+
 @endpush
