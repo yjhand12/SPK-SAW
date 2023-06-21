@@ -17,7 +17,7 @@ class CreateUserTable extends Migration
             $table->id()->length(5);
             $table->string('email')->unique()->length(50);
             $table->string('password')->length(50);
-            $table->string('role');
+            $table->enum('role', ['ADMIN', 'USER']);
             $table->timestamps();
         });
     }
