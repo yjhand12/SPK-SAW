@@ -19,7 +19,10 @@
                     <th>No</th>
                     <th>NISN</th>
                     <th>Nama</th>
+                    <th>Asal Sekolah</th>
                     <th>Nilai Akhir</th>
+                    <th>Keputusan</th>
+                    <th>Keterangan</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +31,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $mhs->nisn }}</td>
                     <td>{{ $mhs->nama }}</td>
+                    <td>{{ $mhs->asal_sekolah }}</td>
                     @php
                     $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
                     $total = 0;
@@ -38,8 +42,9 @@
                     $total += $n->bobot*100;
                     @endphp
                     @endforeach
-
                     <td>{{ $total }}</td>
+                    <td>DITERIMA</td>
+                    <td>Cerdas</td>
                 </tr>
                 @endforeach
             </tbody>

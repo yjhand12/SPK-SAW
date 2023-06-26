@@ -16,6 +16,10 @@ use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('404', 'Error404Controller@index')->name('404');
 
+Route::get('/', function () {
+    return redirect ('login');
+});
+
 Route::middleware(['auth'])->group(function(){
     Route::get('home', 'HomeController@index')->name('home');
 });
