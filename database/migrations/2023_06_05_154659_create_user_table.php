@@ -15,9 +15,10 @@ class CreateUserTable extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id()->length(5);
+            $table->string('nama')->unique()->length(50);
             $table->string('email')->unique()->length(50);
-            $table->string('password')->length(50);
-            $table->enum('role', ['ADMIN', 'USER']);
+            $table->string('password')->length(255);
+            $table->enum('role', ['ADMIN', 'USER'])->default('USER');
             $table->timestamps();
         });
     }
