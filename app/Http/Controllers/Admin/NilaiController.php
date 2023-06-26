@@ -32,7 +32,7 @@ class NilaiController extends Controller
             'mahasiswa.nisn as nisn',
             'kriteria.nama as kr',
             'sub_kriteria.bobot as bobot',
-            'sub_kriteria.keterangan as keterangan')
+            'sub_kriteria.keterangan as keterangan',)
         ->leftJoin('mahasiswa', 'mahasiswa.id', '=', 'nilai.mahasiswa_id')
         ->leftJoin('kriteria', 'kriteria.id', '=', 'nilai.kriteria_id')
         ->leftJoin('sub_kriteria', 'sub_kriteria.id', '=', 'nilai.sub_kriteria_id')

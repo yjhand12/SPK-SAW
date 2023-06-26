@@ -52,9 +52,9 @@
                 fitur
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('hasil.index')}}">
                     <i class="fas fa-puzzle-piece"></i>
-                    <span>Perhitungan</span>
+                    <span>Hasil Seleksi</span>
                 </a>
             </li>
             <li class="nav-item">

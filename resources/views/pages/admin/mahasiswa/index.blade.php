@@ -42,7 +42,7 @@
                         <form action="{{route('mahasiswa.destroy', $mahasiswa->id)}}" method="POST" class="delete-form">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger mx-2 delete-button" type="button" value="Hapus">Hapus</button>
+                            <button class="btn btn-sm btn-danger mx-2" type="submit" onclick="return confirm('Hapus data ini?')" value="Hapus">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -54,30 +54,4 @@
 @endsection
 
 @push('addon-script')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $(document).ready(function(){
-        $('.delete-button').click(function(){
-            var form = $(this).closest('.delete-form');
-            var mahasiswaName = form.data('name');
-
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Data " + mahasiswaName + " akan dihapus permanen!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            });
-        });
-
-        $('#dataTables').DataTable();
-    });
-</script>
 @endpush

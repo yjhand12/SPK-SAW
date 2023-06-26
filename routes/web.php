@@ -38,4 +38,5 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])->group(
     Route::resource('sub-kriteria', 'SubKriteriaController');
     Route::get('/nilai/get-nama', 'NilaiController@getNama')->name('nilai.getNama');
     Route::resource('nilai', 'NilaiController');
+    Route::resource('hasil', 'HasilController');
 });

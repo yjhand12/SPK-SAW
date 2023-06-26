@@ -64,7 +64,7 @@
                             @csrf
                             @method('DELETE')
                         <button class="btn btn-sm btn-danger mx-2" type="submit" onclick="return confirm('Hapus data ini?')" value="Hapus">Hapus</button>
-                    </form>
+                        </form>
                     </td>
                 </tr>
                 @php
