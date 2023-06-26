@@ -17,7 +17,7 @@ class KriteriaSeeder extends Seeder
         $arr_values = [
             ['Rata-rata nilai US', 'Benefit', 0.5],
             ['Buta warna', 'Cost', 0.2],
-            ['SMK Jurusan Informatika (RPL, TKJ, TEI, Multimedia, Broadcasting)', 'Benefit', 0.2],
+            ['SMK Jurusan Informatika', 'Benefit', 0.2],
             ['Mempunyai Kartu Indonesia Pintar', 'Benefit', 0,1],
         ];
 
