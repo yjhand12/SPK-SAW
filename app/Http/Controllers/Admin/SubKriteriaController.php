@@ -19,7 +19,7 @@ class SubKriteriaController extends Controller
      */
     public function index()
     {
-        $kriteria = Kriteria::all();
+        $kriteria = Kriteria::get();
         $subkriteria = SubKriteria::all();
         $data = SubKriteria::with('kriteria')->paginate(2);
         return view('pages.admin.sub-kriteria.index', [
