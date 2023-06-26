@@ -13,11 +13,11 @@
                     <div class="col-lg-12">
                         <div class="login-form">
                             <div class="text-center">
-                                <img src="" style="max-width: 200px">
+                                <img src="/assets/images/pilibist.jpg" style="max-width: 200px">
                             </div>
                             <form action="{{ route('register')}}" method="POST">
                                 @csrf
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <label class="form-label">Nama</label><br>
                                     <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
                                 </div>
@@ -27,23 +27,19 @@
                                 </div>
                                 <div class="form-group">
                                     <br><label class="form-label">Password</label><br>
-                                    <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
-                                    <div class="input-group-append toggle-password">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-eye-slash toggle-password-icon"></i>
-                                        </span>
+                                    <div class="input-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                                     </div>
-                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Masukkan Password">
-                                    <div class="input-group-append toggle-password">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-eye-slash toggle-password-icon"></i>
-                                        </span>
+                                    <div class="input-group mt-2">
+                                        <input type="password" name="password_confirmation" class="form-control" placeholder="Masukkan Password">
                                     </div>
+                                </div><br><br>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="submit">Daftar</button>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Daftar</button>
                             </form>
-                            <div class="text-center">
-                                Sudah mempunyai akun? <a class="font-weight-bold small" href="">Masuk</a>
+                            <div class="text-center mt-3">
+                                Sudah mempunyai akun? <a class="font-weight-bold small" href="{{route('login')}}"><button class="btn btn-outline-primary btn-sm">Login</button></a>
                             </div>
                         </div>
                     </div>

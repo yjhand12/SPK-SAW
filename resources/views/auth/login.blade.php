@@ -13,7 +13,7 @@
                     <div class="col-lg-12">
                         <div class="login-form">
                             <div class="text-center">
-                                <img src="" style="max-width: 200px">
+                                <img src="/assets/images/pilibist.jpg" style="max-width: 200px">
                             </div>
                             <form action="{{ route('cek-login')}}" method="POST">
                                 @csrf
@@ -23,15 +23,17 @@
                                 </div>
                                 <div class="form-group">
                                     <br><label class="form-label">Password</label><br>
-                                    <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
-                                    <div class="input-group-append toggle-password">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-eye-slash toggle-password-icon"></i>
-                                        </span>
+                                    <div class="input-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                                     </div>
+                                </div><br><br>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="submit">Login</button>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Login</button>
                             </form>
+                            <div class="text-center mt-3">
+                                Belum mempunyai akun? <a class="font-weight-bold small" href="{{route('register')}}"><button class="btn btn-outline-primary btn-sm">Register</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,11 +48,11 @@
             let icon = $('.toggle-password-icon');
             $('.toggle-password').click(function(){
                 let password = $('.password');
-                if(password.attr("type") == "password") {
-                    password.attr("type","text");
+                if(password.type == 'password') {
+                    password.type = "text";
                     icon.removeClass('fa-eye-slash').addClass('fa-eye');
                 } else {
-                    password.attr("type","password");
+                    password.type = "password";
                     icon.removeClass('fa-eye').addClass('fa-eye-slash');
                 }
             })
