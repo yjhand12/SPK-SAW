@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Mahasiswa
+    STEPA - Mahasiswa
 @endsection
 
 @section('content')

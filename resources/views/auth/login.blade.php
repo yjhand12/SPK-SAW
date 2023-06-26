@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('title')
-    Login
+    STEPA - Login
 @endsection
 
 @section('content')

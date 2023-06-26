@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Sub Kriteria
+    STEPA - Sub Kriteria
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Nilai
+    STEPA - Nilai
 @endsection
 
 @section('content')
