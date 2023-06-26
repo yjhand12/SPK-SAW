@@ -6,7 +6,7 @@
         <div class="sidebar-brand-text mx-3">STEPA</div>
     </a>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{route('admin-dashboard')}}">
                 <i class="fas fa-home"></i>
                 <span>Beranda</span>
             </a>
