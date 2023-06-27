@@ -36,7 +36,7 @@ class UserController extends Controller
             }
   
         } else {
-            return redirect('login')->withErrors('Salah')->withInput();
+            return redirect('login')->withErrors(['message' => 'Email atau Password yang anda masukan salah'])->withInput();
         }
     }
 

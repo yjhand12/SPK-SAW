@@ -19,13 +19,21 @@
                                 @csrf
                                 <div class="form-group">
                                     <br><label class="form-label">Email</label><br>
-                                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email">
+                                    <input type="email" name="email" class="form-control @error('email')
+                                                is-invalid @enderror" placeholder="Masukkan Email">
+                                    @error('email')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <br><label class="form-label">Password</label><br>
                                     <div class="input-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
+                                        <input type="password" name="password" class="form-control @error('password')
+                                                is-invalid @enderror" placeholder="Masukkan Password">
                                     </div>
+                                    @error('password')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div><br><br>
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-primary" type="submit">Login</button>
