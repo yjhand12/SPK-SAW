@@ -22,10 +22,24 @@
                     <th>Asal Sekolah</th>
                     <th>Nilai Akhir</th>
                     <th>Keputusan</th>
-                    <th>Keterangan</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                $sortedMahasiswa = $mahasiswa->sortByDesc(function ($mhs) use ($nilai) {
+                    $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
+                    $total = 0;
+
+                    foreach ($nle as $n) {
+                        $total += $n->bobot * 100;
+                    }
+
+                    return $total;
+                });
+
+                $topMahasiswa = $sortedMahasiswa->take(3)->pluck('id')->all();
+                @endphp
+
                 @foreach ($mahasiswa as $mhs)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -35,16 +49,19 @@
                     @php
                     $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
                     $total = 0;
-                    @endphp
 
-                    @foreach ($nle as $n)
-                    @php
-                    $total += $n->bobot*100;
+                    foreach ($nle as $n) {
+                        $total += $n->bobot * 100;
+                    }
                     @endphp
-                    @endforeach
                     <td>{{ $total }}</td>
-                    <td>DITERIMA</td>
-                    <td>Cerdas</td>
+                    <td>
+                        @if (in_array($mhs->id, $topMahasiswa))
+                            <b>DITERIMA</b>
+                        @else
+                            <b>TIDAK DITERIMA</b>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
