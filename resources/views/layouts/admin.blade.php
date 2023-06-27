@@ -35,7 +35,8 @@
                 {{-- Page Content --}}    
                 @yield('content')
             </div>
-
+            {{-- Footer --}}
+            @include('includes.footer')
         </div>
     </div>
 </div>
