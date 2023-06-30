@@ -37,7 +37,7 @@
                     return $total;
                 });
 
-                $topMahasiswa = $sortedMahasiswa->take(3)->pluck('id')->all();
+                $topMahasiswa = $sortedMahasiswa->take(15)->pluck('id')->all();
                 @endphp
 
                 @foreach ($mahasiswa as $mhs)
