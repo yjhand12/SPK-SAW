@@ -21,8 +21,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('dashboard', 'HomeController@index')->name('home');
     Route::get('home', 'User\DashboardController@index')->name('dashboard');
+    Route::get('hasil-seleksi', 'User\HasilSeleksiController@index')->name('hasil-seleksi');
 });
 
 
