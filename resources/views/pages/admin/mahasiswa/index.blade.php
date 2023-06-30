@@ -54,4 +54,10 @@
 @endsection
 
 @push('addon-script')
+<script>
+    $(document).ready(function(){
+        $('#dataTables').DataTable({
+        });
+    });
+</script>
 @endpush
