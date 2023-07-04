@@ -23,6 +23,9 @@ class MahasiswaSeeder extends Seeder
             ['0020194292', 'Nafa Safaroh Shafa Az Zahra', 'Banjarnegara', '2002-03-12', 'Perempuan', 'MA Wathoniyah Islamiyah Kebarongan'],
             ['0027800898', 'Clarissa Monique Maharani', 'Surakarta', '2002-05-28', 'Perempuan', 'SMAN 6 Surakarta'],
             ['0030014924', 'Aji Nur Prasetyo', 'Kab. Semarang', '2003-03-24', 'Laki-Laki', 'SMKN 2 Salatiga'],
+            ['0040295643', 'Faiz Nesa Aulia Noor', 'Grobogan', '2004-04-19', 'Perempuan', 'SMA Takhassus Al-Quran'],
+            ['0027408832', 'Nova Aditya', 'Salatiga', '2002-11-24', 'Laki-Laki', 'SMK Telekomukasi Tunas Harapan'],
+
             ['0039784926', 'Jidar Titahjaya', 'Klaten', '2003-06-29', 'Laki-Laki', 'SMK Muhammadiyah Salatiga'],
             ['0043650551', 'Dionisius Lucky Noviantoro', 'Salatiga', '2002-11-28', 'Laki-Laki', 'SMKN 2 Salatiga'],
             ['0014144654', 'Fastabiqa Rizky Novendra', 'Surakarta', '2001-11-09', 'Laki-Laki', 'SMKN Colomadu'],
@@ -34,6 +37,7 @@ class MahasiswaSeeder extends Seeder
             ['0032634854', 'Samuel Thomas Latekay', 'Ambon', '2003-04-17', 'Laki-Laki', 'SMKN 3 Ambon'],
             ['0032954011', 'Muhammad Angga Ferdyan', 'Kab. Semarang', '2003-03-11', 'Laki-Laki', 'SMK Muhammadiyah Salatiga'],
             ['0043694887', 'Kanca Dwi Sulistiyo', 'Jakarta', '2004-04-14', 'Laki-Laki', 'SMKN 2 Salatiga'],
+            ['0051704763', 'Uun Saifudin', 'Temanggung', '2003-07-15', 'Laki-Laki', 'SMK Bhumi Phala Parakan'],
         ];
 
         foreach ($arr_values as $value) {
