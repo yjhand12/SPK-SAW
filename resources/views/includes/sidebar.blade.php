@@ -17,7 +17,7 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('mahasiswa.index')}}">
-                    <i class="fas fa-rocket"></i>
+                    <i class="fas fa-users"></i>
                     <span>Mahasiswa</span>
                 </a>
             </li>
@@ -27,7 +27,7 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('kriteria.index')}}">
-                    <i class="fas fa-th-large"></i>
+                    <i class="fas fa-cube"></i>
                     <span>Kriteria</span>
                 </a>
             </li>
@@ -43,7 +43,7 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('nilai.index')}}">
-                    <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-edit"></i>
                     <span>Nilai Mahasiswa</span>
                 </a>
             </li>
@@ -53,7 +53,7 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('hasil.index')}}">
-                    <i class="fas fa-puzzle-piece"></i>
+                    <i class="fas fa-chart-area"></i>
                     <span>Hasil Seleksi</span>
                 </a>
             </li>
