@@ -39,7 +39,7 @@
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                Input
+                Nilai
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('nilai.index')}}">
@@ -49,7 +49,7 @@
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                fitur
+                Hasil
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('hasil.index')}}">
@@ -57,6 +57,10 @@
                     <span>Hasil Seleksi</span>
                 </a>
             </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Fitur
+            </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i>

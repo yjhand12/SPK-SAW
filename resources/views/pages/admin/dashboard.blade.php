@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="" class="text-secondary text-decoration-none">Data Alternatif</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{route('mahasiswa.index')}}" class="text-secondary text-decoration-none">Data Mahasiswa</a></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="" class="text-secondary text-decoration-none">Data Kriteria</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{route('kriteria.index')}}" class="text-secondary text-decoration-none">Data Kriteria</a></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-cube fa-2x text-gray-300"></i>
@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="" class="text-secondary text-decoration-none">Data Sub Kriteria</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{route('sub-kriteria.index')}}" class="text-secondary text-decoration-none">Data Sub Kriteria</a></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-cubes fa-2x text-gray-300"></i>
@@ -65,7 +65,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="" class="text-secondary text-decoration-none">Data Penilaian</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{route('nilai.index')}}" class="text-secondary text-decoration-none">Data Nilai</a></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-edit fa-2x text-gray-300"></i>
@@ -80,7 +80,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="" class="text-secondary text-decoration-none">Data Hasil Akhir</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="{{route('hasil.index')}}" class="text-secondary text-decoration-none">Data Hasil Seleksi</a></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-chart-area fa-2x text-gray-300"></i>
