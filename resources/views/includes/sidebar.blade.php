@@ -8,7 +8,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin-dashboard')}}">
                 <i class="fas fa-home"></i>
-                <span>Beranda</span>
+                <span>Dashboard</span>
             </a>
         </li>
         <hr class="sidebar-divider">
