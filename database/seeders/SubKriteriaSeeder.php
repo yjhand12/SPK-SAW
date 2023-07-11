@@ -15,9 +15,9 @@ class SubKriteriaSeeder extends Seeder
     {
         $kriteria = \App\Models\Kriteria::all();
         $arr_values = [
-            [['1 - 65', 1], ['66 - 70', 2], ['71 - 75', 3], ['76 - 80', 4], ['81 - 85', 5], ['86 - 90', 6], ['91 - 99', 7]],
+            [['1 - 65', 1], ['66 - 70', 2], ['71 - 73', 3], ['74 - 77', 4], ['78 - 80', 5], ['81 - 83', 6], ['84 - 87', 7], ['88 - 90', 8], ['91 - 93', 9], ['94 - 99', 10]],
             [['Tidak Buta Warna', 1], ['Buta Warna Pascal', 3], ['Buta Warna', 5]],
-            [['Teknik Informatika Jaringan', 5], ['Rekayasa Perangkat Lunak', 4], ['Teknologi Elektronika Industri', 3], ['Multimedia/Broadcasting', 2], ['Tidak', 1]], 
+            [['Teknik Informatika Jaringan', 5], ['Rekayasa Perangkat Lunak', 4], ['Multimedia/Broadcasting', 3], ['Tidak', 2]], 
             [['Ya', 5], ['Tidak', 1]],
         ];
 
