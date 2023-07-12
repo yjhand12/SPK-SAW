@@ -34,10 +34,12 @@
                         $total += $n->bobot * 100;
                     }
 
-                    return $total;
+                    return [$total, -$mhs->id];
                 });
 
-                $topMahasiswa = $sortedMahasiswa->take(15)->pluck('id')->all();
+                $totalMahasiswa = count($mahasiswa);
+                $jumlahTopMahasiswa = ceil($totalMahasiswa / 2);
+                $topMahasiswa = $sortedMahasiswa->take($jumlahTopMahasiswa)->pluck('id')->all();
                 @endphp
 
                 @foreach ($mahasiswa as $mhs)
