@@ -18,7 +18,7 @@ class SubKriteriaSeeder extends Seeder
             [['1 - 65', 1], ['66 - 70', 2], ['71 - 73', 3], ['74 - 77', 4], ['78 - 80', 5], ['81 - 83', 6], ['84 - 87', 7], ['88 - 90', 8], ['91 - 93', 9], ['94 - 99', 10]],
             [['Tidak Buta Warna', 1], ['Buta Warna Pascal', 3], ['Buta Warna', 5]],
             [['Teknik Informatika Jaringan', 5], ['Rekayasa Perangkat Lunak', 4], ['Multimedia/Broadcasting', 3], ['Tidak', 2]], 
-            [['Ya', 5], ['Tidak', 1]],
+            [['Ya', 5], ['Tidak', 3]],
         ];
 
         foreach ($kriteria as $key => $kr) {
