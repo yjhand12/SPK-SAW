@@ -31,9 +31,8 @@
                 $total = 0;
 
                 foreach ($nle as $n) {
-                    $total += $n->bobot * 100;
+                    $total += $n->bobot;
                 }
-
                 return [$total, -$mhs->id];
             });
 
@@ -46,7 +45,7 @@
                     $total = 0;
 
                     foreach ($nle as $n) {
-                        $total += $n->bobot * 100;
+                        $total += $n->bobot;
                     }
 
                     $keputusan = in_array($mhs->id, $topMahasiswa) ? 'DITERIMA' : 'TIDAK DITERIMA';
