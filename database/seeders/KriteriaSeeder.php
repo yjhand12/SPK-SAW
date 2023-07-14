@@ -15,10 +15,10 @@ class KriteriaSeeder extends Seeder
     public function run()
     {
         $arr_values = [
-            ['Rata-rata nilai US', 'Benefit', 0.5],
-            ['Buta warna', 'Cost', 0.2],
-            ['SMK Jurusan Informatika', 'Benefit', 0.2],
-            ['Mempunyai Kartu Indonesia Pintar', 'Benefit', 0.1],
+            ['Rata-rata nilai US', 'Benefit', 60],
+            ['Buta warna', 'Cost', 20],
+            ['SMK Jurusan Informatika', 'Benefit', 10],
+            ['Mempunyai Kartu Indonesia Pintar', 'Benefit', 10],
         ];
 
         foreach ($arr_values as $value) {
