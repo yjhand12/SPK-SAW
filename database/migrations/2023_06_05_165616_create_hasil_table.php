@@ -16,7 +16,8 @@ class CreateHasilTable extends Migration
         Schema::create('hasil', function (Blueprint $table) {
             $table->id()->length(5);
             $table->foreignId('mahasiswa_id')->length(5);
-            $table->float('hasil')->length(24);
+            $table->float('nilai')->length(12);
+            $table->enum('keputusan', ['DITERIMA', 'TIDAK DITERIMA']);
             $table->timestamps();
         });
     }

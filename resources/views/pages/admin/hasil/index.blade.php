@@ -25,22 +25,22 @@
                 </tr>
             </thead>
             <tbody>
-                @php
-                $sortedMahasiswa = $mahasiswa->sortByDesc(function ($mhs) use ($nilai) {
-                    $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
-                    $total = 0;
-                    return [$total, -$mhs->id];
-                });
+            @php
+            $sortedMahasiswa = $mahasiswa->sortByDesc(function ($mhs) use ($nilai) {
+                $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
+                $total = 0;
 
-                $topMahasiswa = $sortedMahasiswa->take(13)->pluck('id')->all();
-                @endphp
+                foreach ($nle as $n) {
+                    $total += $n->bobot * 100;
+                }
 
+                return [$total, -$mhs->id];
+            });
+
+            $topMahasiswa = $sortedMahasiswa->take(13)->pluck('id')->all();
+
+            @endphp
                 @foreach ($mahasiswa as $mhs)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $mhs->nisn }}</td>
-                    <td>{{ $mhs->nama }}</td>
-                    <td>{{ $mhs->asal_sekolah }}</td>
                     @php
                     $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
                     $total = 0;
@@ -48,19 +48,40 @@
                     foreach ($nle as $n) {
                         $total += $n->bobot * 100;
                     }
+
+                    $keputusan = in_array($mhs->id, $topMahasiswa) ? 'DITERIMA' : 'TIDAK DITERIMA';
+
+                        $dataHasil = [
+                            'mahasiswa_id' => $mhs->id,
+                            'nilai' => $total,
+                            'keputusan' => $keputusan
+                        ];
+
+                    $CekData = App\Models\Hasil::where('mahasiswa_id', $mhs->id)->first();
+                    if ($CekData) {
+                        $CekData->update($dataHasil);
+                    } else {
+                        App\Models\Hasil::create($dataHasil);
+                    }
                     @endphp
+
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $mhs->nisn }}</td>
+                    <td>{{ $mhs->nama }}</td>
+                    <td>{{ $mhs->asal_sekolah }}</td>
                     <td>{{ $total }}</td>
                     <td>
-                        @if (in_array($mhs->id, $topMahasiswa))
-                            <b>DITERIMA</b>
+                        @if ($keputusan === 'DITERIMA')
+                        <b>DITERIMA</b>
                         @else
-                            <b>TIDAK DITERIMA</b>
+                        <b>TIDAK DITERIMA</b>
                         @endif
                     </td>
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table>   
     </div>
 </div>
 @endsection
