@@ -75,7 +75,7 @@ class HasilController extends Controller
                 $result = min($rates) / $mhsfilter[$ik]->bobot;
             }
             $result *= $k->bobot;
-            $mhsfilter[$ik]->bobot = round($result, 5);
+            $mhsfilter[$ik]->bobot = round($result, 2);
         }
     }
 
