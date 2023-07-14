@@ -29,17 +29,10 @@
                 $sortedMahasiswa = $mahasiswa->sortByDesc(function ($mhs) use ($nilai) {
                     $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
                     $total = 0;
-
-                    foreach ($nle as $n) {
-                        $total += $n->bobot * 100;
-                    }
-
                     return [$total, -$mhs->id];
                 });
 
-                $totalMahasiswa = count($mahasiswa);
-                $jumlahTopMahasiswa = ceil($totalMahasiswa / 2);
-                $topMahasiswa = $sortedMahasiswa->take($jumlahTopMahasiswa)->pluck('id')->all();
+                $topMahasiswa = $sortedMahasiswa->take(13)->pluck('id')->all();
                 @endphp
 
                 @foreach ($mahasiswa as $mhs)

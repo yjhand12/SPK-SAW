@@ -36,15 +36,15 @@
                     <br><label class="form-label">Bobot Kriteria</label><br>
                         <select class="form-select" aria-label="Default select example" name="bobot">
                             <option disabled>Pilih Bobot Kriteria</option>
-                            <option value="0.1">0.1</option>
-                            <option value="0.2">0.2</option>
-                            <option value="0.3">0.3</option>
-                            <option value="0.4">0.4</option>
-                            <option value="0.5">0.5</option>
-                            <option value="0.6">0.6</option>
-                            <option value="0.7">0.7</option>
-                            <option value="0.8">0.8</option>
-                            <option value="0.9">0.9</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="70">70</option>
+                            <option value="80">80</option>
+                            <option value="90">90</option>
                         </select>
                 </div>
             </div>
