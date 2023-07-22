@@ -16,7 +16,7 @@ class CreateNilai extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->id()->length(5);
             $table->foreignId('mahasiswa_id')->length(50)->constrained('mahasiswa')->onDelete('cascade');
-            $table->foreignId('kriteria_id')->length(50);
+            $table->foreignId('kriteria_id')->length(50)->constrained('kriteria')->onDelete('cascade');
             $table->foreignId('sub_kriteria_id')->length(50);
             $table->timestamps();
         });
