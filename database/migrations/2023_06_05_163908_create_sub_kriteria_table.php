@@ -15,7 +15,7 @@ class CreateSubKriteriaTable extends Migration
     {
         Schema::create('sub_kriteria', function (Blueprint $table) {
             $table->id()->length(5);
-            $table->foreignId('kriteria_id')->length(5);
+            $table->foreignId('kriteria_id')->length(5)->constrained('kriteria')->onDelete('cascade');
             $table->string('keterangan')->length(50);
             $table->integer('bobot')->length(11);
             $table->timestamps();
