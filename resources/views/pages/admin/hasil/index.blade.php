@@ -57,7 +57,19 @@
                 } else {
                     $keputusan = in_array($mhs->id, $topMahasiswa) ? 'DITERIMA' : 'TIDAK DITERIMA';
                 }
+                
+                $dataHasil = [
+                            'mahasiswa_id' => $mhs->id,
+                            'nilai' => $total,
+                            'keputusan' => $keputusan
+                        ];
 
+                    $CekData = App\Models\Hasil::where('mahasiswa_id', $mhs->id)->first();
+                    if ($CekData) {
+                        $CekData->update($dataHasil);
+                    } else {
+                        App\Models\Hasil::create($dataHasil);
+                    }
                 @endphp
 
                 <tr>
