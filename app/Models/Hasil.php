@@ -10,7 +10,7 @@ class Hasil extends Model
     public $table = "hasil";
 
     protected $fillable = [
-        'mahasiswa_id', 'nilai', 'keputusan'
+        'mahasiswa_id', 'nilai', 'keputusan', 'keterangan'
     ];
     public function mahasiswa(){
         return $this->belongsTo( Mahasiswa::class, 'mahasiswa_id', 'id');

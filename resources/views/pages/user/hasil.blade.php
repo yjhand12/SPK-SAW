@@ -33,6 +33,7 @@
                                 <th>Asal Sekolah</th>
                                 <th>Nilai Akhir</th>
                                 <th>Keputusan</th>
+                                <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +46,7 @@
                                 <td>{{ $hasil->mahasiswa->asal_sekolah }}</td>
                                 <td>{{ $hasil->nilai }}</td>
                                 <td>{{ $hasil->keputusan }}</td>
+                                <td>{{ $hasil->keterangan   }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -54,8 +56,6 @@
         </div>
     </div>
 </section>
-
-
 </main>
 {{-- Footer --}}
 @include('includes.footer')

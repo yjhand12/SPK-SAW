@@ -18,6 +18,7 @@ class CreateHasilTable extends Migration
             $table->foreignId('mahasiswa_id')->length(5)->constrained('mahasiswa')->onDelete('cascade');
             $table->float('nilai')->length(12);
             $table->enum('keputusan', ['DITERIMA', 'TIDAK DITERIMA']);
+            $table->string('keterangan')->length(99);
             $table->timestamps();
         });
     }
