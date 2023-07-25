@@ -58,13 +58,15 @@
                         <td>-</td>
                     @endif
                 @endforeach
-                    <td class="d-flex">
-                        <a class="btn btn-sm btn-info text-white mx-1" href="{{route('nilai.edit', $nile->id)}}" type="button" style="margin-bottom:5px">Edit</a>
-                        <form action="{{route('nilai.destroy', $mhs->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                        <button class="btn btn-sm btn-danger mx-2" type="submit" onclick="return confirm('Hapus data ini?')" value="Hapus">Hapus</button>
-                        </form>
+                    <td>
+                        <div class ="d-flex">
+                            <a class="btn btn-sm btn-info text-white mx-1" href="{{route('nilai.edit', $nile->id)}}" type="button" style="margin-bottom:5px">Edit</a>
+                            <form action="{{route('nilai.destroy', $mhs->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                            <button class="btn btn-sm btn-danger mx-2" type="submit" onclick="return confirm('Hapus data ini?')" value="Hapus">Hapus</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @php
