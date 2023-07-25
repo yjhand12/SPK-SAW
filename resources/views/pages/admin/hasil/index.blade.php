@@ -38,67 +38,68 @@
 
                 $topMahasiswa = $sortedMahasiswa->take(13)->pluck('id')->all();
             @endphp
+
             @foreach ($mahasiswa as $mhs)
-            @php
-                $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
-                $total = 0;
+                @php
+                    $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
+                    $total = 0;
 
-                foreach ($nle as $n) {
-                    $total += $n->bobot;
-                }
-
-                $hasSubKriteria13 = App\Models\Nilai::where('mahasiswa_id', $mhs->id)
-                    ->where('sub_kriteria_id', 13)
-                    ->exists();
-
-                if ($hasSubKriteria13) {
-                    $keputusan = 'TIDAK DITERIMA';
-                    $keterangan = 'Mahasiswa Program Studi RKS Tidak Boleh Buta Warna';
-                } else {
-                    $keputusan = in_array($mhs->id, $topMahasiswa) ? 'DITERIMA' : 'TIDAK DITERIMA';
-                    if ($keputusan === 'DITERIMA') {
-                        $keterangan = 'Selamat, Anda Diterima';
-                    } elseif ($keputusan === 'TIDAK DITERIMA') {
-                        $keterangan = 'Mohon Maaf, Anda Tidak Diterima';
+                    foreach ($nle as $n) {
+                        $total += $n->bobot;
                     }
-                }
 
-                $maxKeputusanLength = 50;
-                $maxKeteranganLength = 50;
-                $keputusan = mb_substr($keputusan, 0, $maxKeputusanLength);
-                $keterangan = mb_substr($keterangan, 0, $maxKeteranganLength);
+                    $butawarna = App\Models\Nilai::where('mahasiswa_id', $mhs->id)
+                                ->whereHas('subKriteria', function ($query) {
+                                    $query->where('keterangan', 'Buta Warna');
+                                })->exists();
 
-                $dataHasil = [
-                    'mahasiswa_id' => $mhs->id,
-                    'nilai' => $total,
-                    'keputusan' => $keputusan,
-                    'keterangan' => $keterangan
-                ];
+                    if ($butawarna) {
+                        $keputusan = 'TIDAK DITERIMA';
+                        $keterangan = 'Mahasiswa Program Studi RKS Tidak Boleh Buta Warna';
+                    } else {
+                        $keputusan = in_array($mhs->id, $topMahasiswa) ? 'DITERIMA' : 'TIDAK DITERIMA';
+                        if ($keputusan === 'DITERIMA') {
+                            $keterangan = 'Selamat, Anda Diterima';
+                        } elseif ($keputusan === 'TIDAK DITERIMA') {
+                            $keterangan = 'Mohon Maaf, Anda Tidak Diterima';
+                        }
+                    }
 
-                $CekData = App\Models\Hasil::where('mahasiswa_id', $mhs->id)->first();
-                if ($CekData) {
-                    $CekData->update($dataHasil);
-                } else {
-                    App\Models\Hasil::create($dataHasil);
-                }
-            @endphp
+                    $maxKeputusanLength = 50;
+                    $maxKeteranganLength = 50;
+                    $keputusan = mb_substr($keputusan, 0, $maxKeputusanLength);
+                    $keterangan = mb_substr($keterangan, 0, $maxKeteranganLength);
 
-    <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $mhs->nisn }}</td>
-        <td>{{ $mhs->nama }}</td>
-        <td>{{ $mhs->asal_sekolah }}</td>
-        <td>{{ $total }}</td>
-        <td>
-            @if ($keputusan === 'DITERIMA')
-                <b>DITERIMA</b>
-            @else
-                <b>TIDAK DITERIMA</b>
-            @endif
-        </td>
-    </tr>
-@endforeach
+                    $dataHasil = [
+                        'mahasiswa_id' => $mhs->id,
+                        'nilai' => $total,
+                        'keputusan' => $keputusan,
+                        'keterangan' => $keterangan
+                    ];
 
+                    $CekData = App\Models\Hasil::where('mahasiswa_id', $mhs->id)->first();
+                    if ($CekData) {
+                        $CekData->update($dataHasil);
+                    } else {
+                        App\Models\Hasil::create($dataHasil);
+                    }
+                @endphp
+
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $mhs->nisn }}</td>
+                    <td>{{ $mhs->nama }}</td>
+                    <td>{{ $mhs->asal_sekolah }}</td>
+                    <td>{{ $total }}</td>
+                    <td>
+                        @if ($keputusan === 'DITERIMA')
+                            <b>DITERIMA</b>
+                        @else
+                            <b>TIDAK DITERIMA</b>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
