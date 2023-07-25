@@ -39,30 +39,26 @@
             $topMahasiswa = $sortedMahasiswa->take(13)->pluck('id')->all();
 
             @endphp
-                @foreach ($mahasiswa as $mhs)
-                    @php
-                    $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
-                    $total = 0;
+            @foreach ($mahasiswa as $mhs)
+                @php
+                $nle = $nilai->where('idmahasiswa', $mhs->id)->all();
+                $total = 0;
 
-                    foreach ($nle as $n) {
-                        $total += $n->bobot;
-                    }
+                foreach ($nle as $n) {
+                    $total += $n->bobot;
+                }
 
+                $hasSubKriteria13 = App\Models\Nilai::where('mahasiswa_id', $mhs->id)
+                    ->where('sub_kriteria_id', 13)
+                    ->exists();
+
+                if ($hasSubKriteria13) {
+                    $keputusan = 'TIDAK DITERIMA';
+                } else {
                     $keputusan = in_array($mhs->id, $topMahasiswa) ? 'DITERIMA' : 'TIDAK DITERIMA';
+                }
 
-                        $dataHasil = [
-                            'mahasiswa_id' => $mhs->id,
-                            'nilai' => $total,
-                            'keputusan' => $keputusan
-                        ];
-
-                    $CekData = App\Models\Hasil::where('mahasiswa_id', $mhs->id)->first();
-                    if ($CekData) {
-                        $CekData->update($dataHasil);
-                    } else {
-                        App\Models\Hasil::create($dataHasil);
-                    }
-                    @endphp
+                @endphp
 
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -78,11 +74,14 @@
                         @endif
                     </td>
                 </tr>
-                @endforeach
+            @endforeach
+
+
             </tbody>
-        </table>   
+        </table>
     </div>
 </div>
+
 @endsection
 
 @push('addon-script')
