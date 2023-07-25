@@ -24,7 +24,6 @@
                     <th>Keterangan</th>
                     <th>Nilai</th>
                     <th>Opsi</th>
-                    <th>asd</th>
                 </tr>
             </thead>
             <tbody>
