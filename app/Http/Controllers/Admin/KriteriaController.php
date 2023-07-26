@@ -42,10 +42,18 @@ class KriteriaController extends Controller
         $request->validate([
             'nama' => 'required|unique:kriteria,nama',
         ]);
+
+        $currentTotalBobot = Kriteria::sum('bobot');
+        $newTotalBobot = $currentTotalBobot + $request->input('bobot');
+
+        if ($newTotalBobot > 100) {
+            return redirect()->back()->with('error', 'Total bobot Kriteria melebihi 100! Silahkan periksa kembali bobot pada kriteria.');
+        }
+
         Kriteria::create([
-            'nama' => $request->nama,
-            'sifat' => $request->sifat,
-            'bobot' => $request->bobot,
+            'nama' => $request->input('nama'),
+            'sifat' => $request->input('sifat'),
+            'bobot' => $request->input('bobot'),
         ]);
 
         return redirect()->route('kriteria.index');
@@ -89,6 +97,17 @@ class KriteriaController extends Controller
         $data = $request->all();
         $kriteria = Kriteria::findOrfail($id);
         $kriteria->update($data);
+        // Calculate the total sum of bobot
+    $kriteria = Kriteria::findOrFail($id); // Get the kriteria by ID
+    $totalBobot = Kriteria::where('id', '!=', $id)->sum('bobot');
+    $inputBobot = $request->input('bobot');
+
+    if ($totalBobot - $kriteria->bobot + $inputBobot > 100) {
+        return redirect()->back()->with('error', 'Total bobot Kriteria melebihi 100!');
+    }
+
+    // Update the kriteria with the new data
+    $kriteria->update($request->all());
 
         return redirect()->route('kriteria.index');
     }

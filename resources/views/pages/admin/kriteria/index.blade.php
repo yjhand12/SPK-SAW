@@ -47,6 +47,22 @@
         </table>
     </div>
 </div>
+    @php
+    $totalBobot = $kriteria->sum('bobot');
+    @endphp
+    <div class="card mb-3">
+        @if ($totalBobot > 100)
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Total bobot Kriteria melebihi 100!',
+                        html: 'Total bobot Kriteria harus kurang dari 100! <br> Silahkan periksa kembali bobot pada kriteria.',
+                    });
+                });
+            </script>
+        @endif
+    </div>
 @endsection
 
 @push('addon-script')
@@ -56,4 +72,5 @@
         });
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
