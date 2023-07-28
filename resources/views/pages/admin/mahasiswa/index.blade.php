@@ -37,13 +37,15 @@
                     <td>{{$mahasiswa->tempat_lahir}}, {{$mahasiswa->tanggal_lahir}}</td>
                     <td>{{$mahasiswa->jenis_kelamin}}</td>
                     <td>{{$mahasiswa->asal_sekolah}}</td>
-                    <td class="d-flex">
+                    <td>
+                        <div class="d-flex">
                         <a class="btn btn-sm btn-info text-white mx-1" href="{{route('mahasiswa.edit', $mahasiswa->id)}}" type="button" style="margin-bottom:5px">Edit</a>
-                        <form action="{{route('mahasiswa.destroy', $mahasiswa->id)}}" method="POST" class="delete-form">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger mx-2" type="submit" onclick="return confirm('Hapus data ini?')" value="Hapus">Hapus</button>
-                        </form>
+                            <form action="{{route('mahasiswa.destroy', $mahasiswa->id)}}" method="POST" class="delete-form">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger mx-2" type="submit" onclick="return confirm('Hapus data ini?')" value="Hapus">Hapus</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
